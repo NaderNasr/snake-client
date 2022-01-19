@@ -10,7 +10,7 @@ const setupInput = () => {
 };
 
 const handleUserInput = (key) => {
-  process.stdout.write("Move: up");
+  process.stdout.write(`You quit \n`);
   if (key === '\u0003') {
     process.exit();
   }
