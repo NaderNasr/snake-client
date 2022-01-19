@@ -3,23 +3,22 @@ const net = require("net");
 
 const connect = () => {
   const conn = net.createConnection({
-    host: '192.168.0.96',
+    host: '165.227.47.243',
     port: 50541,
   });
   
   conn.on("connect", () => {
     console.log(`Successfully connected to game server`);
-    conn.write("Name: ___");
+    conn.write("Name: FUN");
+    
   });
 
   conn.on('data', (data) => {
     console.log('Server says: ', data);
   });
   
-
   // interpret incoming data as text
   conn.setEncoding("utf8");
-
   return conn;
 };
 
