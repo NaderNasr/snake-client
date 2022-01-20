@@ -8,18 +8,25 @@ const connect = () => {
   });
   
   conn.on("connect", () => {
-    console.log(`Successfully connected to game server`);
-    conn.write("Name: M00");
-    
+    console.log('Successfully connected to game server');
+    conn.write('Name: YO!');
+    conn.write('Move: down');
+    conn.write('Move: up');
+    conn.write('Move: left');
+    conn.write('Move: right');
   });
 
-  conn.on('data', (data) => {
-    console.log('Server says: ', data);
+  conn.on("data", data => {
+    console.log(data);
   });
   
+
   // interpret incoming data as text
   conn.setEncoding("utf8");
+
   return conn;
 };
 
-module.exports = connect;
+module.exports = {
+  connect,
+};
