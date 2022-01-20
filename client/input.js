@@ -1,9 +1,11 @@
+
 let connection;
+const {moveDown, moveUp, moveLeft, moveRight} = require('./constants');
+
 
 const setupInput = (conn) => {
   const stdin = process.stdin;
   connection = conn;
-  
   stdin.setRawMode(true);
   stdin.setEncoding("utf8");
   stdin.resume();
@@ -11,29 +13,28 @@ const setupInput = (conn) => {
   
 };
 
-const handleUserInput = (data) => {
-  console.log(data);
+const handleUserInput = () => {
   process.stdin.on('data', (key) => {
     if (key === '\u0003') { //Exit application
       process.exit();
     }
     if (key === 'w') {
-      connection.write("Move: up");
+      connection.write(moveUp);
     }
     if (key === "s") {
-      connection.write("Move: down");
+      connection.write(moveDown);
     }
     if (key === "a") {
-      connection.write("Move: left");
+      connection.write(moveLeft);
     }
     if (key === "d") {
-      connection.write("Move: right");
-    }
-    if (key === "n") {
-      connection.write("Say: HEYYY!");
+      connection.write(moveRight);
     }
     if (key === "m") {
-      connection.write("Say: I am a hacker ;)");
+      connection.write('BEEEEEEPPP BEEP');
+    }
+    if (key === "n") {
+      connection.write('NOPE');
     }
   });
   

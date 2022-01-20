@@ -1,6 +1,6 @@
 // establishes a connection with the game server
 const net = require("net");
-const {IP, PORT} = require('./constants');
+const {IP, PORT, NAME, moveDown, moveUp, moveLeft, moveRight} = require('./constants');
 
 const connect = () => {
   const conn = net.createConnection({
@@ -10,11 +10,11 @@ const connect = () => {
   
   conn.on("connect", () => {
     console.log('Successfully connected to game server');
-    conn.write('Name: YO!');
-    conn.write('Move: down');
-    conn.write('Move: up');
-    conn.write('Move: left');
-    conn.write('Move: right');
+    conn.write(NAME);
+    conn.write(moveDown);
+    conn.write(moveUp);
+    conn.write(moveLeft);
+    conn.write(moveRight);
   });
 
   conn.on("data", data => {
